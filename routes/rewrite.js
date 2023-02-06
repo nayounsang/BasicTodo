@@ -7,9 +7,8 @@ router.post('/', function(req, res, next) {
 		'encoding': 'utf8'
 	}, function (err, data) {
 		data = JSON.parse(data);
-        data.todos[req.body.index] = null;	
-		data.todos = data.todos.filter(Boolean);
-        fs.writeFile('./data/todo_list.json', JSON.stringify(data), function (err) {
+        data.todos[req.body.index].value = req.body.text
+        fs.writeFile('./data/todo_list.json', JSON.stringify(data), function(err) {
 			res.json(true);
 		});
     });
