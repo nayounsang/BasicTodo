@@ -10,6 +10,7 @@ var addRouter = require('./routes/add');
 var deleteRouter = require('./routes/delete');
 var completeRouter = require('./routes/complete');
 var showRouter = require('./routes/show');
+var rewriteRouter = require('./routes/rewrite');
 
 var app = express();
 
@@ -23,15 +24,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'reactapp/build')));
+app.use(express.static(path.join(__dirname, 'data')));
 app.use(cors())
 
 app.use('/', indexRouter);
 app.use('/add',addRouter);
 app.use('/delete',deleteRouter);
 app.use('/complete',completeRouter);
-app.use('/show',showRouter)
-
-// catch 404 and forward to error handler
+app.use('/show',showRouter);
+app.use('/rewrite',rewriteRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
