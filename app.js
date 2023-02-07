@@ -33,6 +33,8 @@ app.use('/delete',deleteRouter);
 app.use('/complete',completeRouter);
 app.use('/show',showRouter);
 app.use('/rewrite',rewriteRouter);
+
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });

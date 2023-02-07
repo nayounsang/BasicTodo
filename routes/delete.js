@@ -2,7 +2,6 @@ var express = require('express');
 var fs = require('fs');
 var router = express.Router();
 
-/* GET home page. */
 router.post('/', function(req, res, next) {
     fs.readFile('./data/todo_list.json', {
 		'encoding': 'utf8'
@@ -14,8 +13,6 @@ router.post('/', function(req, res, next) {
 			res.json(true);
 		});
     });
-	
-	//res.send('hello world')
 });
 
 module.exports = router;
